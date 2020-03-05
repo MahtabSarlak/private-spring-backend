@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--<head th:replace="fragments/head :: head">
+</head>-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:fragment="head">
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!--<META HTTP-EQUIV="Access-Control-Allow-Origin" CONTENT="http://localhost:8080/adminPage/json-users">-->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css"/>
+
+
+    <link th:rel="stylesheet" rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<nav th:fragment="nav" id="navbar-home" class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" th:href="@{/index}" href="index">Private</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/index}" href="/index">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+
+
+        <ul class="navbar-nav ml-auto" id="users-nav-item" sec:authorize="${isAuthenticated()}">
+
+            <!--region Displaying hello + username-->
+            <!--==============================================================================-->
+            <li class="nav-item">
+                <span class="navbar-text">Hello <span sec:authentication="name"></span></span>
+            </li>
+            <!--=============================================================================-->
+            <!--endregion-->
+
+
+            <!--region For ROLE_ADMIN display admin page-->
+            <!--================================================================================================-->
+            <li class="nav-item d-flex">
+                <i class="align-self-center fas fa-user-cog" style="color: white;"></i>
+                <a class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/adminPage}" href="/adminPage">
+                    Admin Page
+                </a>
+            </li>
+            <!--================================================================================================-->
+            <!--endregion-->
+
+
+            <!--region Logout button-->
+            <!--==================================================================================-->
+            <li class="nav-item">
+                <a class="nav-link" href="javascript: document.logoutForm.submit()" role="menuitem">
+                    Logout
+                </a>
+                <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Sign Out"/>
+                </form>
+            </li>
+            <!--==================================================================================-->
+            <!--endregion-->
+        </ul>
+
+        <!--region Login and Register menu items-->
+        <!--==========================================================================================-->
+        <ul class="navbar-nav ml-auto" sec:authorize="${!isAuthenticated()}">
+            <li class="nav-item d-flex flex-row">
+                <i class="align-self-center fa fa-user-o " aria-hidden="true" style="color: white;"></i>
+                <a class="nav-link mr-3" th:href="@{/login}" href="/login">Log In</a>
+            </li>
+            <li class="nav-item d-flex flex-row">
+                <i class="align-self-center fa fa-sign-in " aria-hidden="true" style="color: white;"></i>
+                <a class="nav-link" th:href="@{/register}" href="/register">Register</a>
+            </li>
+        </ul>
+        <!--==========================================================================================-->
+        <!--endregion-->
+    </div>
+</nav>
+</body>
+</html>

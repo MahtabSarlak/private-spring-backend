@@ -1,0 +1,67 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background: #ffffff;
+}
+
+#home-section {
+    background: url("../images/home.jpg") no-repeat;
+    min-height: 700px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#home-section .dark-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 700px; }
+
+#home-section .home-inner {
+    padding-top: 150px;
+}
+
+#navbar-home{
+    border-bottom:#008ed6 3px solid;
+    opacity:0.8;
+}
+
+#users-nav-item .nav-item{
+    margin: 0px 5px;
+}
+.nav-item{
+    color: white;
+}
+
+
+.global-errors{
+    list-style-type: none;
+    padding: 0px;
+}
+
+#login-form{
+    margin-top: 150px;
+}
+
+#registration-form{
+    margin-top: 150px;
+}
+
+
+
+
+/* Footer*/
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    color: darkgrey;
+}
