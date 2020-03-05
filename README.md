@@ -44,7 +44,7 @@ CREATE DATABASE  IF NOT EXISTS `spring`;
 USE `spring`;
 
  ```
- 3.Change email and password in application.property file
+ 3. Change email and password in application.property file
  
  4. Run `tomcatRun` 
  
