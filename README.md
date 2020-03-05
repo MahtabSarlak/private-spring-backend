@@ -30,7 +30,7 @@ The application is written using Spring MVC framework and maven (for external de
 
 ## How to run it?
 
-Prerequisites: Intellij IDE ([with Gradle and Tomcat plugin installed]
+Prerequisites: Intellij IDE ([with maven and Tomcat plugin installed]
 
 1. Clone this git repository
 
