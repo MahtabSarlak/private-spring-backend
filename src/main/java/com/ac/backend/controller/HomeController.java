@@ -74,7 +74,8 @@ public class HomeController {
 
             user.setEnabled(true);
 
-
+            System.out.println(user.toString());
+            System.out.println(user.getRoles());
             userService.saveUser(user);
 
             /*String appUrl = request.getScheme() + "://" + request.getServerName();

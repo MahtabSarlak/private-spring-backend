@@ -22,7 +22,7 @@ public class Role {
     private String name;
 
     @JsonManagedReference
-    @ManyToMany(mappedBy = "roles", cascade = CascadeType.MERGE)
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.ALL)
     private Set<User> users = new HashSet<>();
 
     public Role() {
@@ -56,6 +56,15 @@ public class Role {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", users=" + users +
+                '}';
     }
 
     public void setId(Long id) {
